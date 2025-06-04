@@ -91,4 +91,101 @@ public class ArbolDecision {
         }
     } 
     
+    public void cargarArbolPredeterminado() {
+        // Hojas (animales)
+        Nodo leon = new Nodo("león", false);
+        Nodo tigre = new Nodo("tigre", false);
+        Nodo perro = new Nodo("perro", false);
+        Nodo gato = new Nodo("gato", false);
+        Nodo vaca = new Nodo("vaca", false);
+        Nodo caballo = new Nodo("caballo", false);
+        Nodo murcielago = new Nodo("murciélago", false);
+        Nodo aguila = new Nodo("águila", false);
+        Nodo paloma = new Nodo("paloma", false);
+        Nodo pingüino = new Nodo("pingüino", false);
+        Nodo loro = new Nodo("loro", false);
+        Nodo delfin = new Nodo("delfín", false);
+        Nodo tiburon = new Nodo("tiburón", false);
+        Nodo ballena = new Nodo("ballena", false);
+        Nodo rana = new Nodo("rana", false);
+        Nodo serpiente = new Nodo("serpiente", false);
+
+        // Subárbol doméstico
+
+        Nodo ladra = new Nodo("¿Ladra?", true);
+        ladra.setIzquierda(perro);
+        ladra.setDerecha(gato);
+
+        Nodo tieneColaDomestico = new Nodo("¿Tiene cola?", true);
+        tieneColaDomestico.setIzquierda(ladra);
+        tieneColaDomestico.setDerecha(loro);
+
+        Nodo esDomestico = new Nodo("¿Es un animal doméstico?", true);
+        esDomestico.setIzquierda(tieneColaDomestico);
+
+        // Subárbol no doméstico → ¿Vive en el agua?
+        Nodo tieneAletas = new Nodo("¿Tiene aletas?", true);
+        tieneAletas.setIzquierda(tiburon);
+        tieneAletas.setDerecha(delfin);
+
+        Nodo esMamiferoAcuatico = new Nodo("¿Es un mamífero marino?", true);
+        esMamiferoAcuatico.setIzquierda(ballena);
+        esMamiferoAcuatico.setDerecha(tieneAletas);
+
+        Nodo viveEnElAgua = new Nodo("¿Vive en el agua?", true);
+        viveEnElAgua.setIzquierda(esMamiferoAcuatico);
+
+        // Subárbol terrestre
+        Nodo tienePezuñas = new Nodo("¿Tiene pezuñas?", true);
+        tienePezuñas.setIzquierda(vaca);
+        tienePezuñas.setDerecha(caballo);
+
+        Nodo sePuedeMontar = new Nodo("¿Se puede montar?", true);
+        sePuedeMontar.setIzquierda(caballo);
+        sePuedeMontar.setDerecha(vaca);
+
+        Nodo esRapaz = new Nodo("¿Es un ave rapaz?", true);
+        esRapaz.setIzquierda(aguila);
+        esRapaz.setDerecha(paloma);
+
+        Nodo vuela = new Nodo("¿Vuela?", true);
+        vuela.setIzquierda(esRapaz);
+        vuela.setDerecha(pingüino);
+
+        Nodo tienePlumas = new Nodo("¿Tiene plumas?", true);
+        tienePlumas.setIzquierda(vuela);
+        tienePlumas.setDerecha(rana);
+
+        Nodo esNocturno = new Nodo("¿Es nocturno?", true);
+        esNocturno.setIzquierda(murcielago);
+        esNocturno.setDerecha(serpiente);
+
+        Nodo viveEnLaSelva = new Nodo("¿Vive en la selva?", true);
+        viveEnLaSelva.setIzquierda(tigre);
+        viveEnLaSelva.setDerecha(leon);
+
+        Nodo esCarnivoro = new Nodo("¿Es carnívoro?", true);
+        esCarnivoro.setIzquierda(viveEnLaSelva);
+        esCarnivoro.setDerecha(sePuedeMontar);
+
+        Nodo tieneCola = new Nodo("¿Tiene cola?", true);
+        tieneCola.setIzquierda(esCarnivoro);
+        tieneCola.setDerecha(esNocturno);
+
+        Nodo terrestre = new Nodo("¿Es terrestre?", true);
+        terrestre.setIzquierda(tienePlumas);
+        terrestre.setDerecha(tieneCola);
+
+        // Parte derecha de la raíz: animales salvajes
+        Nodo noDomestico = new Nodo("¿Es salvaje?", true);
+        noDomestico.setIzquierda(viveEnElAgua);
+        noDomestico.setDerecha(terrestre);
+
+        // Raíz final
+        esDomestico.setDerecha(noDomestico);
+        raiz = esDomestico;
+    }
+
+
+    
 }

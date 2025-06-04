@@ -14,7 +14,8 @@ public class ProyectoFinalEDA {
 
         
         //Metodos de insercion para crear arbol predeterminado
-        
+        juego.cargarArbolPredeterminado();
+        System.out.println("Árbol de animales predeterminado cargado correctamente.");
         
         
         
