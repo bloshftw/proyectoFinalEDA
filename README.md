@@ -1,18 +1,20 @@
-🐾 Juego Adivinanza
+#🐾 Juego Adivinanza
 Trabajo integrador (parcial) donde se repasan conceptos de grafos, árboles, estructuras de datos y lógica utilizando el lenguaje Java.
 
 🧠 Descripción del Proyecto
 Este proyecto consiste en un juego de adivinanza en el que el programa intenta adivinar el animal en el que está pensando el usuario, a partir de preguntas de sí / no.
 Para lograrlo, se utiliza un árbol binario de decisiones, donde:
 
-Cada nodo intermedio representa una pregunta.
+  Cada nodo intermedio representa una pregunta.
 
-Cada hoja representa un animal (una posible respuesta final).
+  Cada hoja representa un animal (una posible respuesta final).
 
-A medida que el usuario responde, el programa avanza por el árbol hasta llegar a una conclusión.
-Si el sistema falla al adivinar, el usuario tiene la opción de enseñarle un nuevo animal y una pregunta para diferenciarlo, permitiendo que el árbol crezca y mejore con el tiempo.
+  A medida que el usuario responde, el programa avanza por el árbol hasta llegar a una conclusión.
 
-🎯 Objetivos
+  Si el sistema falla al adivinar, el usuario tiene la opción de enseñarle un nuevo animal y una pregunta para diferenciarlo, permitiendo que el árbol crezca y mejore con el tiempo.
+
+#🎯 Objetivos
+
 Crear un sistema que adivine animales a partir de preguntas simples (sí / no).
 
 Permitir que el árbol crezca con nuevos animales y preguntas (retroalimentación).
@@ -22,59 +24,61 @@ Hacer que el usuario pueda jugar todas las veces que desee.
 Incluir una opción para que el usuario pueda rendirse y finalizar el juego.
 
 ⚙️ Funcionalidades Principales
-🌱 Construcción del Árbol Inicial
-El árbol parte de una estructura mínima con algunas preguntas y animales predefinidos.
-Puede expandirse a medida que el sistema aprende.
-
-🎮 Jugar una Partida
-El usuario piensa en un animal y responde preguntas. El sistema intentará adivinar correctamente.
-
-📚 Aprendizaje del Sistema
-Si el sistema no adivina correctamente, se inicia un proceso de aprendizaje:
-
-El usuario ingresa el animal correcto.
-
-Proporciona una pregunta que lo diferencie del animal anterior.
-
-Indica si la respuesta a esa pregunta para el nuevo animal es "sí" o "no".
-
-El árbol se actualiza en memoria.
-
-🏳️ Rendirse
-El usuario puede abandonar la partida escribiendo "rendirse".
+  🌱 Construcción del Árbol Inicial
+  El árbol parte de una estructura mínima con algunas preguntas y animales predefinidos.
+  Puede expandirse a medida que el sistema aprende.
+  
+  🎮 Jugar una Partida
+  El usuario piensa en un animal y responde preguntas. El sistema intentará adivinar correctamente.
+  
+  📚 Aprendizaje del Sistema
+  Si el sistema no adivina correctamente, se inicia un proceso de aprendizaje:
+  
+  El usuario ingresa el animal correcto.
+  
+  Proporciona una pregunta que lo diferencie del animal anterior.
+  
+  Indica si la respuesta a esa pregunta para el nuevo animal es "sí" o "no".
+  
+  El árbol se actualiza en memoria.
+  
+  🏳️ Rendirse
+  El usuario puede abandonar la partida escribiendo "rendirse".
 
 🌳 Estructura del Árbol
-Tipos de Nodos
-Nodo de pregunta: contiene una pregunta (ej. ¿Vuela? ¿Es mamífero?).
-
-Nodo de respuesta: contiene un animal (ej. ¿Es un perro?).
-
-Direcciones del Árbol
-Respuesta "Sí" → rama izquierda.
-
-Respuesta "No" → rama derecha.
+  Tipos de Nodos
+  Nodo de pregunta: contiene una pregunta (ej. ¿Vuela? ¿Es mamífero?).
+  
+  Nodo de respuesta: contiene un animal (ej. ¿Es un perro?).
+  
+  Direcciones del Árbol
+  Respuesta "Sí" → rama izquierda.
+  
+  Respuesta "No" → rama derecha.
 
 🔄 Flujo Básico del Juego
-El sistema inicia desde la raíz del árbol.
-
-Formula preguntas según los nodos intermedios.
-
-Al llegar a una hoja, realiza una suposición.
-
-Si adivina correctamente, muestra un mensaje de éxito.
-
-Si falla, solicita al usuario que le enseñe:
-
-Qué animal era.
-
-Qué pregunta lo distingue.
-
-Cuál es la respuesta correcta a esa pregunta.
-
-Se actualiza el árbol con esta nueva información.
+  El sistema inicia desde la raíz del árbol.
+  
+  Formula preguntas según los nodos intermedios.
+  
+  Al llegar a una hoja, realiza una suposición.
+  
+  Si adivina correctamente, muestra un mensaje de éxito.
+  
+  Si falla, solicita al usuario que le enseñe:
+  
+  Qué animal era.
+  
+  Qué pregunta lo distingue.
+  
+  Cuál es la respuesta correcta a esa pregunta.
+  
+  Se actualiza el árbol con esta nueva información.
 
 🧩 Función: construirArbolDesdeCero()
+
 📌 Propósito
+
 Permite construir manualmente el árbol de decisiones desde cero, solicitando al usuario preguntas y animales, y generando los nodos de forma recursiva.
 Cumple con el requisito de la consigna: "construir el árbol mediante inserciones".
 
