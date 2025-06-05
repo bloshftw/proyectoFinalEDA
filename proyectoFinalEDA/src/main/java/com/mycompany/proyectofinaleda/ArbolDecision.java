@@ -102,7 +102,7 @@ public class ArbolDecision {
         Nodo murcielago = new Nodo("murcielago", false);
         Nodo aguila = new Nodo("aguila", false);
         Nodo paloma = new Nodo("paloma", false);
-        Nodo pingüino = new Nodo("pinguino", false);
+        Nodo pinguino = new Nodo("pinguino", false);
         Nodo loro = new Nodo("loro", false);
         Nodo anguila = new Nodo("anguila", false);
         Nodo tiburon = new Nodo("tiburon", false);
@@ -110,8 +110,7 @@ public class ArbolDecision {
         Nodo rana = new Nodo("rana", false);
         Nodo serpiente = new Nodo("serpiente", false);
 
-        // Subarbol domestico
-
+        // Subárbol doméstico
         Nodo ladra = new Nodo("¿Ladra?", true);
         ladra.setIzquierda(perro);
         ladra.setDerecha(gato);
@@ -123,7 +122,7 @@ public class ArbolDecision {
         Nodo esDomestico = new Nodo("¿Es un animal domestico?", true);
         esDomestico.setIzquierda(tieneColaDomestico);
 
-        // Subarbol no domestico → ¿Vive en el agua?
+        // Subárbol acuático
         Nodo tieneAletas = new Nodo("¿Tiene aletas?", true);
         tieneAletas.setIzquierda(tiburon);
         tieneAletas.setDerecha(anguila);
@@ -133,7 +132,23 @@ public class ArbolDecision {
         esMamiferoAcuatico.setDerecha(tieneAletas);
 
         Nodo viveEnElAgua = new Nodo("¿Vive en el agua?", true);
-        viveEnElAgua.setIzquierda(esMamiferoAcuatico);
+        viveEnElAgua.setIzquierda(esMamiferoAcuatico); // respuesta "Sí"
+
+        // Subárbol de animales con plumas (respuesta "No" a "¿Vive en el agua?")
+        Nodo esAveRapaz = new Nodo("¿Es un ave rapaz?", true);
+        esAveRapaz.setIzquierda(aguila);
+        esAveRapaz.setDerecha(paloma);
+
+        Nodo vuela = new Nodo("¿Vuela?", true);
+        vuela.setIzquierda(esAveRapaz);
+        vuela.setDerecha(pinguino);
+
+        Nodo tienePlumas = new Nodo("¿Tiene plumas?", true);
+        tienePlumas.setIzquierda(vuela);
+        tienePlumas.setDerecha(rana);
+
+        // 🔧 Solución al error: conectar subárbol terrestre al "No" de "¿Vive en el agua?"
+        viveEnElAgua.setDerecha(tienePlumas); 
 
         // Subárbol terrestre
         Nodo tienePezuñas = new Nodo("¿Tiene pezuñas?", true);
@@ -144,22 +159,6 @@ public class ArbolDecision {
         sePuedeMontar.setIzquierda(caballo);
         sePuedeMontar.setDerecha(vaca);
 
-        Nodo esRapaz = new Nodo("¿Es un ave rapaz?", true);
-        esRapaz.setIzquierda(aguila);
-        esRapaz.setDerecha(paloma);
-
-        Nodo vuela = new Nodo("¿Vuela?", true);
-        vuela.setIzquierda(esRapaz);
-        vuela.setDerecha(pingüino);
-
-        Nodo tienePlumas = new Nodo("¿Tiene plumas?", true);
-        tienePlumas.setIzquierda(vuela);
-        tienePlumas.setDerecha(rana);
-
-        Nodo esNocturno = new Nodo("¿Es nocturno?", true);
-        esNocturno.setIzquierda(murcielago);
-        esNocturno.setDerecha(serpiente);
-
         Nodo viveEnLaSelva = new Nodo("¿Vive en la selva?", true);
         viveEnLaSelva.setIzquierda(tigre);
         viveEnLaSelva.setDerecha(leon);
@@ -168,23 +167,28 @@ public class ArbolDecision {
         esCarnivoro.setIzquierda(viveEnLaSelva);
         esCarnivoro.setDerecha(sePuedeMontar);
 
+        Nodo esNocturno = new Nodo("¿Es nocturno?", true);
+        esNocturno.setIzquierda(murcielago);
+        esNocturno.setDerecha(serpiente);
+
         Nodo tieneCola = new Nodo("¿Tiene cola?", true);
         tieneCola.setIzquierda(esCarnivoro);
         tieneCola.setDerecha(esNocturno);
 
         Nodo terrestre = new Nodo("¿Es terrestre?", true);
-        terrestre.setIzquierda(tienePlumas);
+        terrestre.setIzquierda(tienePlumas); // ya usado en "vive en el agua"
         terrestre.setDerecha(tieneCola);
 
-        // Parte derecha de la raiz: animales salvajes
+        // Parte derecha de la raíz
         Nodo noDomestico = new Nodo("¿Es salvaje?", true);
         noDomestico.setIzquierda(viveEnElAgua);
         noDomestico.setDerecha(terrestre);
 
-        // Raíz final
+        // Conectar raíz final
         esDomestico.setDerecha(noDomestico);
         raiz = esDomestico;
     }
+
 
 
     
